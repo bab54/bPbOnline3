@@ -6,8 +6,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 public class LoginSteps {
     public WebDriver driver;
@@ -45,6 +47,7 @@ public class LoginSteps {
     }
 
     @Then("i should be loged in with the message {string}")
-    public void iShouldBeLogedInWithTheMessage(String arg0) {
+    public void iShouldBeLogedInWithTheMessage(String validationMessage) {
+        Assert.assertEquals(validationMessage , driver.findElement(By.xpath("//*[@id=\"bodyContent\"]/h1")).getText());
     }
 }
